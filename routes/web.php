@@ -17,4 +17,4 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::get('scraper',[App\Http\Controllers\ScraperController::class,'scraper'])->name('scraper');
+Route::get('scraper',[App\Http\Controllers\ScrapperController::class,'scraper'])->name('scraper');
