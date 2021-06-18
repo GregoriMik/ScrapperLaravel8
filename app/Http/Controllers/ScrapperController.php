@@ -15,9 +15,14 @@ class ScrapperController extends Controller
         $url='https://www.worldometers.info/coronavirus/';
         $page=$client->request('GET',$url);
 
-        echo"<pre>";
-        print_r($page);
+        // echo"<pre>";
+        // print_r($page);
 
-        return view('scraper');
+        // echo $page->filter('.maincounter-number')->text();
+        $page->filter('#maincounter-wrap')->each(function($item){
+            $this->results[$item->filter('h1')->text()]=$item->filter('.maincounter-number')->text();
+        });
+        // return view('scraper');
+        return $this->results;
     }
 }
