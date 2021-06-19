@@ -23,6 +23,7 @@ class ScrapperController extends Controller
             $this->results[$item->filter('h1')->text()]=$item->filter('.maincounter-number')->text();
         });
         // return view('scraper');
-        return $this->results;
+        $data = $this->results;
+        return view('scraper',compact('data'));
     }
 }
